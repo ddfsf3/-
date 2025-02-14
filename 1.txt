@@ -1,0 +1,21 @@
+
+Function FindPicClicked(lx, ly, rx, ry, picpath)
+	TracePrint "开始找图" & picpath
+	For i = 1 To 10
+		FindPic lx,ly,rx,ry, picpath,0.8,intX,intY
+		If intX > 0 And intY > 0 Then 
+			Delay 500
+			MoveTo intX, intY
+			LeftClick 1
+			Exit For
+		End If
+		Delay 1000
+	Next
+	If intX > 0 And intY > 0 Then 
+		TracePrint "找到图片并点击..."
+	Else 
+		TracePrint "未找到图片相似位置点击.."
+	End If
+End Function
+
+FindPicClicked 0,0,1280,800,"C:\Users\yxq\Desktop\12.bmp"
